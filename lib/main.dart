@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/widget/Button.dart';
 
 void main() {
   runApp(App());
@@ -11,8 +12,11 @@ class App extends StatelessWidget {
       home: Scaffold(
           backgroundColor: const Color(0xFF181818),
           body: Padding(
-            padding: const EdgeInsets.only(right: 30),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 80,
@@ -22,8 +26,8 @@ class App extends StatelessWidget {
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           'Hey, Ubin Park',
                           style: TextStyle(
                             color: Colors.white,
@@ -34,7 +38,7 @@ class App extends StatelessWidget {
                         Text(
                           'Welcome back',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.8),
+                            color: Color.fromRGBO(255, 255, 255, 0.8),
                             fontSize: 16,
                           ),
                         ),
@@ -43,11 +47,12 @@ class App extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 60,
+                  height: 100,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 40),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,47 +76,32 @@ class App extends StatelessWidget {
                             height: 20,
                           ),
                           Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.amber,
-                                    borderRadius: BorderRadius.circular(50)),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 18,
-                                    horizontal: 50,
-                                  ),
-                                  child: Text(
-                                    'Transfer',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              Button(
+                                text: 'Transfer',
+                                backgroundColor: Colors.amber,
+                                textColor: Colors.black,
                               ),
-                              const SizedBox(
-                                width: 16,
+                              SizedBox(
+                                width: 20,
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: const Color(0xFF242424),
-                                    borderRadius: BorderRadius.circular(50)),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 18,
-                                    horizontal: 50,
-                                  ),
-                                  child: Text(
-                                    'Request',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              )
+                              Button(
+                                text: 'Request',
+                                backgroundColor: Color(0xFF242424),
+                                textColor: Colors.white,
+                              ),
                             ],
-                          )
+                          ),
+                          const SizedBox(
+                            height: 100,
+                          ),
+                          Row(
+                            children: const [
+                              Text('Wallets'),
+                              Text('View All'),
+                            ],
+                          ),
                         ],
                       ),
                     ],
