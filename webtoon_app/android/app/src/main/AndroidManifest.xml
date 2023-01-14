@@ -27,6 +27,16 @@
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <queries>
+            <intent>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:scheme="sms"/>
+            </intent>
+            <intent>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:scheme="tel"/>
+            </intent>
+        </queries>
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
