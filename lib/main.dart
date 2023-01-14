@@ -10,7 +10,14 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  bool showTitle = true;
   List<int> numbers = [];
+
+  void toggleTitle() {
+    setState(() {
+      showTitle = !showTitle;
+    });
+  }
 
   void onClick() {
     setState(() {
@@ -33,8 +40,15 @@ class _AppState extends State<App> {
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                MyTitle(),
+              children: [
+                showTitle ? const MyTitle() : const Text(''),
+                IconButton(
+                    onPressed: toggleTitle,
+                    icon: Icon(
+                      showTitle
+                          ? Icons.remove_red_eye
+                          : Icons.remove_red_eye_outlined,
+                    )),
               ],
             ),
           )),
@@ -42,17 +56,36 @@ class _AppState extends State<App> {
   }
 }
 
-class MyTitle extends StatelessWidget {
+class MyTitle extends StatefulWidget {
   const MyTitle({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<MyTitle> createState() => _MyTitleState();
+}
+
+class _MyTitleState extends State<MyTitle> {
+  @override
+  void initState() {
+    super.initState();
+    print('initState!');
+  }
+
+  @override
+  void dispose() {
+    print('dispose!');
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Text(
+    print('build!');
+    return Text(
       'My Title',
       style: TextStyle(
         fontSize: 28,
+        color: Theme.of(context).textTheme.titleLarge?.color,
       ),
     );
   }
