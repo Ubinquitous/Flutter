@@ -1,92 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/screens/home_screen.dart';
 
 void main() {
   runApp(App());
 }
 
-class App extends StatefulWidget {
-  @override
-  State<App> createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  bool showTitle = true;
-  List<int> numbers = [];
-
-  void toggleTitle() {
-    setState(() {
-      showTitle = !showTitle;
-    });
-  }
-
-  void onClick() {
-    setState(() {
-      numbers.add(numbers.length);
-    });
-  }
-
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        backgroundColor: const Color(0xFFE7626C),
         textTheme: const TextTheme(
-          titleLarge: TextStyle(
-            color: Colors.red,
+          headline1: TextStyle(
+            color: Color(0xFF232B55),
           ),
         ),
+        cardColor: const Color(0xFFF4EDDB),
       ),
-      home: Scaffold(
-          backgroundColor: const Color(0xFFF4EDDB),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                showTitle ? const MyTitle() : const Text(''),
-                IconButton(
-                    onPressed: toggleTitle,
-                    icon: Icon(
-                      showTitle
-                          ? Icons.remove_red_eye
-                          : Icons.remove_red_eye_outlined,
-                    )),
-              ],
-            ),
-          )),
-    );
-  }
-}
-
-class MyTitle extends StatefulWidget {
-  const MyTitle({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<MyTitle> createState() => _MyTitleState();
-}
-
-class _MyTitleState extends State<MyTitle> {
-  @override
-  void initState() {
-    super.initState();
-    print('initState!');
-  }
-
-  @override
-  void dispose() {
-    print('dispose!');
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    print('build!');
-    return Text(
-      'My Title',
-      style: TextStyle(
-        fontSize: 28,
-        color: Theme.of(context).textTheme.titleLarge?.color,
-      ),
+      home: const HomeScreen(),
     );
   }
 }
